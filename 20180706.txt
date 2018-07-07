@@ -1,0 +1,71 @@
+344. Reversestring
+Write a function that takes a string as input and returns the string reversed.
+Example:
+Given s = "hello", return "olleh".
+
+class Solution {
+    public String reverseString(String s) {
+    char [] arr = s.toCharArray();
+
+    String ans="";
+    for(int i =arr.length-1; i>=0; i--){
+    ans = ans + arr[i];
+    }
+
+    return ans;
+
+    }
+}
+
+412. Fizz Buzz
+Write a program that outputs the string representation of numbers from 1 to n.
+But for multiples of three it should output ¡°Fizz¡± instead of the number and for the multiples of five output ¡°Buzz¡±.
+For numbers which are multiples of both three and five output ¡°FizzBuzz¡±.
+
+import java.util.*;
+class Solution {
+    public List<String> fizzBuzz(int n) {
+
+    List<String> list = new ArrayList<>();
+        for(int i=1; i<n+1; i++){
+         if(i%15==0) list.add("FizzBuzz");
+
+         else if(i%5==0) list.add("Buzz");
+
+         else if(i%3==0) list.add("Fizz");
+
+         else    list.add(Integer.toString(i));
+
+        }
+
+    return list;
+
+    }
+}
+
+746. Min Cost Climbing Stairs
+On a staircase, the i-th step has some non-negative cost cost[i] assigned (0 indexed). 
+Once you pay the cost, you can either climb one or two steps.
+You need to find minimum cost to reach the top of the floor, and you can either start from the step with index 0, or the step with index 1. 
+
+class Solution {
+    public int minCostClimbingStairs(int[] cost) {
+            
+     int [] opt = new int[cost.length+1];
+    opt[0] = cost[0];
+    opt[1]= cost[1];  
+    int curcost;    
+    for(int i=2;i<=cost.length;i++){
+    if(i==cost.length) {
+    curcost =0;
+    }
+    else{
+            curcost = cost[i];
+    }
+        opt[i]= Math.min(opt[i-1]+curcost, opt[i-2]+curcost);
+    }
+
+    return opt[cost.length];
+
+    }
+}
